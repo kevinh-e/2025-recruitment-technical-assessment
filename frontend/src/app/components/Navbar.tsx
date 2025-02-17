@@ -21,36 +21,34 @@ export default function Navbar() {
               height={50}
               onClick={() => setLogoOpen((prev) => !prev)}
             />
-            <Link href="/" className="text-2xl font-bold text-primary">
+            <Link href="/" className="text-2xl font-bold text-primary hidden sm:block">
               Freerooms
             </Link>
           </div>
           <div className="flex items-center">
-            <div className="hidden md:block">
-              <div className="ml-10 flex items-baseline space-x-2">
-                <Button
-                  variant="outline"
-                  size="icon"
-                >
-                  <Search />
-                </Button>
+            <div className="ml-10 flex items-baseline space-x-2">
+              <Button
+                variant="outline"
+                size="icon"
+              >
+                <Search />
+              </Button>
 
-                <Button
-                  variant="outline"
-                  size="icon"
-                >
-                  <GridView />
-                </Button>
+              <Button
+                variant="default"
+                size="icon"
+              >
+                <GridView />
+              </Button>
 
-                <Button
-                  variant="outline"
-                  size="icon"
-                >
-                  <Map />
-                </Button>
+              <Button
+                variant="outline"
+                size="icon"
+              >
+                <Map />
+              </Button>
 
-                <ModeToggle />
-              </div>
+              <ModeToggle />
             </div>
           </div>
         </div>
