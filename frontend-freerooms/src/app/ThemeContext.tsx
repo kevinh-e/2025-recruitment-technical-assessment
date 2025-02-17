@@ -34,7 +34,7 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
       },
       background: {
         default: isDarkMode ? "rgb(16, 18, 20)" : "#fff",
-        paper: isDarkMode ? "rgb(26, 28, 30)" : "#fff",
+        paper: isDarkMode ? "rgb(16, 18, 20)" : "#fff",
       },
     },
   })

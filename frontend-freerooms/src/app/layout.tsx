@@ -2,10 +2,8 @@ import type React from "react"
 
 import "./globals.css"
 import type { Metadata } from "next"
-import CssBaseline from "@mui/material/CssBaseline"
-import { ThemeProvider } from "./ThemeContext"
-import Navbar from "./components/Navbar.tsx"
 import { Roboto } from 'next/font/google';
+import ThemeRegistry from "./ThemeRegistry"
 
 const roboto = Roboto({
   weight: ['300', '400', '500', '700'],
@@ -26,11 +24,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={roboto.className}>
-        <ThemeProvider>
-          <CssBaseline />
-          <Navbar />
+        <ThemeRegistry>
           {children}
-        </ThemeProvider>
+        </ThemeRegistry>
       </body>
     </html>
   )

@@ -8,17 +8,25 @@ import Typography from "@mui/material/Typography"
 import Button from "@mui/material/Button"
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup"
 import { useTheme } from "../ThemeContext"
-import { DarkMode, Map, GridView, Search } from "@mui/icons-material"
-import { IconButton, styled } from "@mui/material"
+import { DarkMode, Map, GridView, Search, CenterFocusWeakTwoTone } from "@mui/icons-material"
+import { Box, styled } from "@mui/material"
 import { Josefin_Sans } from "next/font/google"
+import Image from "next/image"
 
 const SquareIconButton = styled(Button)({
-  minWidth: 40,
-  width: 40,
-  height: 40,
+  minWidth: 35,
+  width: 38,
+  height: 38,
   padding: 0,
-  borderRadius: 8,
+  borderRadius: 4,
 });
+
+const LogoText = styled(Typography)({
+  display: "flex",
+  alignItems: "center",
+  lineHeight: "normal",
+  paddingTop: 4,
+})
 
 const josefinSans = Josefin_Sans({
   weight: ['600'],
@@ -29,22 +37,35 @@ const josefinSans = Josefin_Sans({
 const Navbar = () => {
   const [alignment, setAlignment] = useState<string | null>("left")
   const { toggleTheme, isDarkMode } = useTheme()
-  const [logoOpen, setLogoOpen] = useState(false);
+  const [logoOpen, setLogoOpen] = useState(true);
 
   const handleAlignment = (event: React.MouseEvent<HTMLElement>, newAlignment: string | null) => {
     setAlignment(newAlignment)
   }
 
   return (
-    <AppBar position="static" color="background" className="border-b border-gray-200">
-      <Toolbar>
-        <IconButton>
-          <Image>
-          </Image>
-        </IconButton>
-        <Typography variant="h4" color="primary" component="div" sx={{ flexGrow: 1, fontFamily: josefinSans.style.fontFamily }}>
-          Freerooms
-        </IDBVersionChangeEvent>
+    <AppBar position="static" color="background">
+      <Toolbar sx={{ height: 50, display: "flex", alignItems: "center" }}>
+        <Box
+          component="div"
+          sx={{
+            flexGrow: 1,
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+          }}
+        >
+          <Image
+            src={logoOpen ? "/assets/freeRoomsLogo.png" : "/assets/freeroomsDoorClosed.png"}
+            width={45}
+            height={45}
+            alt="freeRooms logo"
+            onClick={() => setLogoOpen((prev) => !prev)}
+          />
+          <LogoText color="primary" variant="h4" sx={{ fontFamily: josefinSans.style.fontFamily }}>
+            Freerooms
+          </LogoText>
+        </Box>
         <ToggleButtonGroup value={alignment} exclusive onChange={handleAlignment} aria-label="nav buttons" sx={{ gap: 1 }}>
           <SquareIconButton
             color="primary"
